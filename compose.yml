@@ -1,0 +1,11 @@
+services:
+  sdk:
+    image: ovirt-sdk-python
+    volumes:
+      - ./ovirt/:/ovirt/
+    environment:
+      - OVIRT_URL=https://engine.ovirt.local/ovirt-engine/api
+      - OVIRT_USER=ovirt@internal
+      - OVIRT_PASSWORD=ovirt
+      - OVIRT_CAFILE=/ovirt/ovirt.crt
+    command: ["python3", "/ovirt/scripts/test_connection.py"]
